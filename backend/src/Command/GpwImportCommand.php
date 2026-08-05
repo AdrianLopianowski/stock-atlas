@@ -172,7 +172,7 @@ final class GpwImportCommand extends Command
                     $failures[] = sprintf('%s (%s): %s', $row['ticker'], $row['isin'], $e->getMessage());
                 }
 
-                usleep(300_000); // nie zajeżdżamy serwera GPW
+                usleep(300_000);
             }
 
             if ($doLogos && null !== $company->getWebsiteUrl() && ($overwrite || null === $company->getLogoUrl())) {
@@ -214,10 +214,7 @@ final class GpwImportCommand extends Command
         return Command::SUCCESS;
     }
 
-    /**
-     * Dopasowuje nazwę sektora z GPW do katalogu; jeśli nie ma dopasowania,
-     * tworzy nowy Sector, żeby żadna spółka nie została bez przypisania.
-     */
+
     private function resolveSector(string $name, ?string $macro): Sector
     {
         $key = GpwSectorCatalog::normalize($name);

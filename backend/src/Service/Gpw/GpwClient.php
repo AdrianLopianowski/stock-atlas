@@ -37,7 +37,7 @@ final class GpwClient
     {
         $html = $this->get(self::LIST_URL);
 
-        // Zmień wzorzec, bo GPW zwraca <span class="pointer" data-isin="PLBRE0000012">MBANK SPÓŁKA AKCYJNA (MBK)</span>
+
         $patternNew = '/data-isin="([A-Z0-9]{9,12})"[^>]*>\s*(.+?)\s*\(([^)]+)\)\s*<\/span>/us';
         $patternOld = '/href="[^"]*isin=([A-Z0-9]{9,12})"[^>]*>\s*(.+?)\s*\(([^)]+)\)\s*</us';
 
