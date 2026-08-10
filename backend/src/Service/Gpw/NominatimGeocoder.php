@@ -6,13 +6,7 @@ namespace App\Service\Gpw;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-/**
- * Geokodowanie adresów przez OpenStreetMap Nominatim.
- *
- * Uwaga na politykę użycia Nominatim: max 1 zapytanie na sekundę i wymagany
- * własny User-Agent z kontaktem. Do jednorazowego zaimportowania ~370 spółek
- * to w zupełności wystarczy (~7 minut), ale nie odpalaj tego w pętli cron.
- */
+
 final class NominatimGeocoder
 {
     private const URL = 'https://nominatim.openstreetmap.org/search';
