@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Moja mapa</h1>
+{% block header_right %}
+    <div class="app-stats-badge">
+        Spółki na mapie: {{ companyCount }}
+    </div>
+{% endblock %}
 
-    {{ ux_map(mapa, { style: 'height: 400px' }) }}
+{% block body %}
+    <div class="map-page-container">
+        {{ ux_map(mapa, { style: 'height: 100%' }) }}
+    </div>
 {% endblock %}

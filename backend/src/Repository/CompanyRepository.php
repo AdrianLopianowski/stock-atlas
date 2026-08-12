@@ -30,6 +30,23 @@ class CompanyRepository extends ServiceEntityRepository
     }
 
     /**
+     * Wyszukiwanie spółek z przypisanymi współrzędnymi geograficznymi.
+     *
+     * @return Company[]
+     */
+    public function findGeocodedWithRelations(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->addSelect('s')
+            ->leftJoin('c.sector', 's')
+            ->andWhere('c.latitude IS NOT NULL')
+            ->andWhere('c.longitude IS NOT NULL')
+            ->orderBy('c.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * Wyszukiwanie po nazwie lub tickerze.
      *
      * @return Company[]
